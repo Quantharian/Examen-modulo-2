@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "A prototype REST API for managing products using TypeScript and Express.js.",
     "main": "src/server1.ts",
+    "type": "module",
     "scripts": {
         "build": "tsc -w",
         "start": "node dist/server1.js",
