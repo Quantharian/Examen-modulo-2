@@ -41,11 +41,11 @@ Esto iniciará el servidor en el puerto especificado (por defecto, el puerto 300
 
 La API expone los siguientes endpoints para interactuar con la entidad **Product**:
 
-- **GET /products**: Devuelve la lista de productos.
-- **GET /products/:id**: Devuelve un producto específico por su ID.
-- **POST /products**: Crea un nuevo producto.
-- **PATCH /products/:id**: Actualiza un producto existente por su ID.
-- **DELETE /products/:id**: Elimina un producto por su ID.
+-   **GET /products**: Devuelve la lista de productos.
+-   **GET /products/:id**: Devuelve un producto específico por su ID.
+-   **POST /products**: Crea un nuevo producto.
+-   **PATCH /products/:id**: Actualiza un producto existente por su ID.
+-   **DELETE /products/:id**: Elimina un producto por su ID.
 
 ## Ejemplos de Uso
 
@@ -95,11 +95,3 @@ DELETE /products/1
 ## Pruebas
 
 Se recomienda utilizar **Postman** para probar los endpoints de la API. Puedes importar la colección de Postman que se encuentra en el archivo `postman.json` en la carpeta `prototipo`.
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas mejorar este proyecto, siéntete libre de hacer un fork y enviar un pull request.
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT.
