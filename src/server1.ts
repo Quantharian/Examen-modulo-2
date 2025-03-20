@@ -21,3 +21,19 @@ interface Product {
 
 // In-memory storage for products, initialized with mock data
 let productList: Product[] = products;
+
+// Endpoint to get the list of products
+app.get("/products", (req: Request, res: Response) => {
+    res.json(productList); // Respond with the list of products in JSON format
+});
+
+// Endpoint to get a product by its ID
+app.get("/products/:id", (req: Request, res: Response) => {
+    const productId = req.params.id; // Extracting the product ID from the request parameters
+    const product = productList.find((p) => p.id === productId); // Finding the product in the list
+    if (product) {
+        res.json(product); // Respond with the found product
+    } else {
+        res.status(404).json({ message: "Product not found" }); // Respond with 404 if not found
+    }
+});
