@@ -1,0 +1,22 @@
+{
+  "name": "prototipo",
+  "version": "1.0.0",
+  "description": "A prototype REST API for managing products using TypeScript and Express.js.",
+  "main": "src/server1.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server1.js",
+    "dev": "ts-node src/server1.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "ts-node": "^10.4.0",
+    "@types/node": "^16.11.7",
+    "@types/express": "^4.17.13"
+  },
+  "author": "",
+  "license": "ISC"
+}
