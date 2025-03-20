@@ -71,6 +71,17 @@ app.patch("/products/:id", (req: Request, res: Response) => {
         res.status(404).json({ message: "Product not found" }); // Responding with 404 if not found
     }
 });
+// Endpoint to delete a product by its ID
+app.delete("/products/:id", (req: Request, res: Response) => {
+    const productId = req.params.id; // Extracting the product ID from the request parameters
+    const productIndex = productList.findIndex((p) => p.id === productId); // Finding the index of the product
+    if (productIndex !== -1) {
+        productList.splice(productIndex, 1); // Removing the product from the list
+        res.status(204).send(); // Responding with a 204 status indicating successful deletion
+    } else {
+        res.status(404).json({ message: "Product not found" }); // Responding with 404 if not found
+    }
+});
 
 // Starting the server on port 3000
 const PORT = 3006; // Defining the port number
