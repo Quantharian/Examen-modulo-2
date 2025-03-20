@@ -53,3 +53,10 @@ app.post("/products", (req: Request, res: Response) => {
     productList.push(newProduct); // Adding the new product to the in-memory list
     res.status(201).json(newProduct); // Responding with the created product and a 201 status
 });
+
+// Starting the server on port 3000
+const PORT = 3006; // Defining the port number
+app.listen(PORT, () => {
+    // Starting the server
+    console.log(`Server is running on http://localhost:${PORT}`); // Logging the server URL
+});
