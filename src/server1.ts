@@ -41,8 +41,9 @@ app.get("/products/:id", (req: Request, res: Response) => {
 // Endpoint to create a new product
 app.post("/products", (req: Request, res: Response) => {
     const newProduct: Product = {
+        id: crypto.randomUUID(), // Generating a unique ID using UUID
         // Creating a new product object from the request body
-        id: require("uuid").v4(), // Generating a unique ID using UUID
+        // Generating a unique ID using UUID
         name: req.body.name, // Setting the name from the request body
         price: req.body.price, // Setting the price from the request body
         stock: req.body.stock, // Setting the stock from the request body
