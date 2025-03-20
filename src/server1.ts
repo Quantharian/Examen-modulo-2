@@ -37,3 +37,19 @@ app.get("/products/:id", (req: Request, res: Response) => {
         res.status(404).json({ message: "Product not found" }); // Respond with 404 if not found
     }
 });
+
+// Endpoint to create a new product
+app.post("/products", (req: Request, res: Response) => {
+    const newProduct: Product = {
+        // Creating a new product object from the request body
+        id: Date.now().toString(), // Generating a unique ID based on the current timestamp
+        name: req.body.name, // Setting the name from the request body
+        price: req.body.price, // Setting the price from the request body
+        stock: req.body.stock, // Setting the stock from the request body
+        is_active: req.body.is_active, // Setting the active status from the request body
+        created_at: new Date(), // Setting the creation timestamp
+        updated_at: new Date(), // Setting the update timestamp
+    };
+    productList.push(newProduct); // Adding the new product to the in-memory list
+    res.status(201).json(newProduct); // Responding with the created product and a 201 status
+});
