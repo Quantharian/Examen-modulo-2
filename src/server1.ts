@@ -1,6 +1,6 @@
 // Importing required modules from Express and other necessary libraries
 import express, { Request, Response } from "express"; // Importing express and types for Request and Response
-import { products } from "./mock/products"; // Importing the mock products data
+import { products } from "./mock/products.js"; // Importing the mock products data
 
 // Creating an instance of an Express application
 const app = express();
@@ -42,7 +42,7 @@ app.get("/products/:id", (req: Request, res: Response) => {
 app.post("/products", (req: Request, res: Response) => {
     const newProduct: Product = {
         // Creating a new product object from the request body
-        id: Date.now().toString(), // Generating a unique ID based on the current timestamp
+        id: require("uuid").v4(), // Generating a unique ID using UUID
         name: req.body.name, // Setting the name from the request body
         price: req.body.price, // Setting the price from the request body
         stock: req.body.stock, // Setting the stock from the request body
@@ -52,6 +52,24 @@ app.post("/products", (req: Request, res: Response) => {
     };
     productList.push(newProduct); // Adding the new product to the in-memory list
     res.status(201).json(newProduct); // Responding with the created product and a 201 status
+});
+
+// Endpoint to update a product by its ID
+app.patch("/products/:id", (req: Request, res: Response) => {
+    const productId = req.params.id; // Extracting the product ID from the request parameters
+    const productIndex = productList.findIndex((p) => p.id === productId); // Finding the index of the product
+    if (productIndex !== -1) {
+        const updatedProduct = {
+            // Creating an updated product object
+            ...productList[productIndex], // Keeping existing product data
+            ...req.body, // Overriding with new data from the request body
+            updated_at: new Date(), // Updating the timestamp
+        };
+        productList[productIndex] = updatedProduct; // Updating the product in the list
+        res.json(updatedProduct); // Responding with the updated product
+    } else {
+        res.status(404).json({ message: "Product not found" }); // Responding with 404 if not found
+    }
 });
 
 // Starting the server on port 3000
